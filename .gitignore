@@ -1,0 +1,41 @@
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# sftp configuration file
+sftp-config.json
+
+# Basics
+*.py[cod]
+*.pyc
+__pycache__
+
+# Logs
+*.log
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+htmlcov
+
+# Translations
+*.mo
+*.pot
+
+# Vim
+
+*~
+*.swp
+*.swo
+
+# npm
+node_modules/
+
+# virtual environments
+.env
+
+# secret files
+secrets.json

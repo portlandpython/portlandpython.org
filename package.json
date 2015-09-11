@@ -1,0 +1,8 @@
+{
+  "name": "portland_python",
+  "version": "1.0.0",
+  "dependencies": {
+    "bower": "^1.5.2",
+    "gulp": "^3.9.0"
+  }
+}

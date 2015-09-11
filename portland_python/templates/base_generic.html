@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+{% load compress %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>{% block title %}{% endblock title %}</title>
+    {% block global_css %}
+    {% compress css %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'bower_components/bootstrap/scss/bootstrap.scss' %}">
+    {% endcompress %}
+    {% endblock global_css %}
+  </head>
+  <body class="{% block view_type %}{% endblock view_type %}">
+    {% block nav %}
+    {% endblock nav %}
+    {% block content %}
+    {% endblock content %}
+    {% block footer %}
+    <div id="footer">
+    </div>
+    {% endblock footer %}
+    {% block global_js %}
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
+    {% endcompress %}
+    {% endblock global_js %}
+  </body>
+</html>
