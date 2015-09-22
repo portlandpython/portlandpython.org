@@ -8,6 +8,9 @@ python:
   - "3.4"
   - "3.5"
 
+env:
+  - DJANGO_SETTINGS_MODULE=config.settings.testing
+
 install:
   - pip install -U -r requirements/requirements.txt
   - pip install -U -r requirements/test_requirements.txt
@@ -15,7 +18,8 @@ install:
 
 # command to run tests, e.g. python setup.py test
 script:
+  python manage.py test
   # py.test --flake  --cov-report term --cov pyzillow test/
 
 after_success:
-  # coveralls
+  coveralls
