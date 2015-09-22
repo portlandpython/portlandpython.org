@@ -1,4 +1,4 @@
-from .base import *
+from .base import *  # noqa
 
 # database
 
@@ -30,11 +30,17 @@ CACHES = {
 
 # debug toolbar
 
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+MIDDLEWARE_CLASSES += (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+)
 
-INSTALLED_APPS += ('debug_toolbar',)
+INSTALLED_APPS += (
+    'debug_toolbar',
+)
 
-INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = (
+    '127.0.0.1',
+)
 
 DEBUG_TOOLBAR_CONFIG = {
     'DISABLE_PANELS': [
@@ -45,7 +51,9 @@ DEBUG_TOOLBAR_CONFIG = {
 
 # Django extensions
 
-INSTALLED_APPS += ('django_extensions', )
+INSTALLED_APPS += (
+    'django_extensions',
+)
 
 SHELL_PLUS = "ipython"
 
