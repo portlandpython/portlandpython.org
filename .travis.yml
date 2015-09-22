@@ -10,11 +10,11 @@ python:
 
 env:
   - DJANGO_SETTINGS_MODULE=config.settings.testing
+  - SECRET_KEY=secret_key_for_testing_!@_56523
 
 install:
   - pip install -U -r requirements/requirements.txt
   - pip install -U -r requirements/test_requirements.txt
-  # pip install -e .
 
 # command to run tests, e.g. python setup.py test
 script:
