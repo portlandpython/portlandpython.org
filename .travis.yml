@@ -18,7 +18,7 @@ install:
 
 # command to run tests, e.g. python setup.py test
 script:
-  python manage.py test
+  python portland_python/manage.py test
   # py.test --flake  --cov-report term --cov pyzillow test/
 
 after_success:
