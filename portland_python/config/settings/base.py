@@ -12,28 +12,19 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import json
 from unipath import Path
 
 from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).ancestor(3)
 
-secrets_path = BASE_DIR.child('config').child('settings', 'secrets.json')
-if not os.path.isfile(secrets_path):
-    raise IOError("Secrets.json is not existing")
 
-with open(secrets_path) as f:
+def get_secret(setting):
     try:
-        secrets = json.loads(f.read())
-    except ValueError:
-        ValueError("secrets.json doesn't have a valid json structure")
-
-
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
+        return os.environ[setting]
+        # better implementation is os.environ.get()
+        # but default return is unknown
+    except AttributeError:
         error_msg = "Set the {} environment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
 
