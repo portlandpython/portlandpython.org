@@ -1,6 +1,23 @@
 from .base import *
 
-# database
+import json
+
+from django.core.exceptions import ImproperlyConfigured
+
+secrets_path = BASE_DIR.child('config').child('settings', 'secrets.json')
+
+with open(secrets_path) as f:
+    secrets = json.loads(f.read())
+
+
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+SECRET_KEY = get_secret('SECRET_KEY')
 
 DATABASES = {
     'default': {
@@ -13,13 +30,9 @@ DATABASES = {
     }
 }
 
-# email
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = 'localhost'
-
-# cache
 
 CACHES = {
     'default': {
@@ -27,8 +40,6 @@ CACHES = {
         'LOCATION': ''
     }
 }
-
-# debug toolbar
 
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
@@ -42,8 +53,6 @@ DEBUG_TOOLBAR_CONFIG = {
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
 }
-
-# Django extensions
 
 INSTALLED_APPS += ('django_extensions', )
 

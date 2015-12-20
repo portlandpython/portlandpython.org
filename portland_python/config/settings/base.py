@@ -11,31 +11,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import json
 from unipath import Path
-
-from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).ancestor(3)
 
-secrets_path = BASE_DIR.child('config').child('settings', 'secrets.json')
-
-with open(secrets_path) as f:
-    secrets = json.loads(f.read())
-
-
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret('SECRET_KEY')
+PROJECT_DIR = Path(__file__).ancestor(4)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -110,12 +90,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 SITE_ID = 1
 
 # Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 ATOMIC_REQUESTS = True
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -132,9 +110,8 @@ USE_TZ = True
 MEDIA_ROOT = BASE_DIR.child('media')
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = BASE_DIR.child('assets')
+STATIC_ROOT = PROJECT_DIR.child('staticfiles')
 
 STATICFILES_DIRS = (
     BASE_DIR.child('static'),
@@ -148,7 +125,7 @@ STATICFILES_FINDERS = (
 
 STATIC_URL = '/static/'
 
-# django compress
+# Django Compressor
 
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
@@ -156,7 +133,7 @@ COMPRESS_PRECOMPILERS = (
 
 COMPRESS_ENABLED = True
 
-COMPRESS_ROOT = BASE_DIR.child('static')
+COMPRESS_ROOT = STATIC_ROOT
 
 # Logging
 
