@@ -48,7 +48,3 @@ DEBUG_TOOLBAR_CONFIG = {
 INSTALLED_APPS += ('django_extensions', )
 
 SHELL_PLUS = "ipython"
-
-# Testing
-
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'

@@ -1,0 +1,17 @@
+language: python
+
+python:
+  - "3.4"
+
+env:
+  - DJANGO_SETTINGS_MODULE=config.settings.test
+
+install:
+  - pip install -r requirements/base.txt
+  - pip install -r requirements/test.txt
+  - npm install --production
+  - bower install
+
+# command to run tests, e.g. python setup.py test
+script:
+  cd portland_python;python manage.py test --settings=config.settings.test
