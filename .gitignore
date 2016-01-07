@@ -42,3 +42,4 @@ secrets.json
 
 # static cache
 CACHE/
+staticfiles/
