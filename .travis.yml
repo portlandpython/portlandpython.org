@@ -7,8 +7,7 @@ env:
   - DJANGO_SETTINGS_MODULE=config.settings.test
 
 install:
-  - pip install -r requirements/base.txt
-  - pip install -r requirements/test.txt
+  - pip install -r requirements.txt
   - npm install --production
   - bower install
 
