@@ -91,6 +91,8 @@ SITE_ID = 1
 
 # Database
 
+DATABASES = {}
+
 ATOMIC_REQUESTS = True
 
 # Internationalization
