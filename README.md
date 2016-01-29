@@ -41,6 +41,12 @@ You must add the following config variables to get the app up and running:
 SECRET_KEY
 ```
 
+#### django-compressor notes
+Heroku may not run compressor. In this case we'll need to add a `bin/post-compile` sh file for Heroku to run after building the slug.
+
+To check that `django-compressor` is running locally, run:  
+`python portland_python/manage.py compress`
+
 #### Deploying Branches
 Local branches can be deployed to heroku too!
 
