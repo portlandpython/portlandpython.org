@@ -44,3 +44,4 @@ secrets.json
 # static cache
 CACHE/
 staticfiles/
+portland_python/static/bower_components/

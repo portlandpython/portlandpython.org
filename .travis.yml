@@ -8,7 +8,7 @@ env:
 
 install:
   - pip install -r requirements.txt
-  - npm install --production
+  - npm install
   - bower install
 
 # command to run tests, e.g. python setup.py test

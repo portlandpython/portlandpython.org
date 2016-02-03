@@ -1,0 +1,24 @@
+{
+  "name": "Portland Python Meetup website",
+  "description": "This is the webite repository for portlandpython.org.",
+  "keywords": [
+    "portland",
+    "python",
+    "django"
+  ],
+  "website": "https://portlandpython.org",
+  "repository": "https://github.com/portlandpython/portlandpython.org",
+  "logo": "https://wiki.python.org/wiki/europython/img/python-logo.gif",
+  "success_url": "/",
+  "env": {
+    "SECRET_KEY": {
+      "description": "The Django SECRET_KEY.",
+      "generator": "secret"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    }
+  ]
+}
